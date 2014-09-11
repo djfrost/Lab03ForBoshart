@@ -7,6 +7,8 @@ using CSC2110::String;
 #include <fstream>
 using namespace std;
 
+using namespace csc2110
+{
 class WriteFile
 {
    private:
@@ -19,5 +21,6 @@ class WriteFile
       void writeLine(CSC2110::String* line);
       void close();
 };
+}
 
 #endif
