@@ -1,7 +1,7 @@
 #include "ReadFile.h"
 #include <iostream>
 #include <string>
-
+using CSC2110::String;
 using namespace csc2110;
 
 ReadFile::ReadFile(const char* file_name)

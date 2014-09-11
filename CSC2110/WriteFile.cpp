@@ -1,6 +1,6 @@
 #include "WriteFile.h"
 #include <sstream>
-
+using CSC2110::String;
 using namespace csc2110;
 
 WriteFile::WriteFile(const char* file_name)
