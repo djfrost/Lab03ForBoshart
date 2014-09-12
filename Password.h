@@ -13,7 +13,7 @@ class Password
       int getNumMatches(String* curr_word, String* word_guess);
 
    public:
-
+	  Password();
 
 };
 
