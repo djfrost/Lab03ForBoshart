@@ -7,7 +7,7 @@ using CSC2110::String;
 #include <fstream>
 using namespace std;
 
-using namespace csc2110
+namespace CSC2110
 {
 class WriteFile
 {

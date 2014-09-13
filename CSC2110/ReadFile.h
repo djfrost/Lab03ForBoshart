@@ -6,7 +6,7 @@ using CSC2110::String;
 
 #include <fstream>
 
-namespace csc2110
+namespace CSC2110
 {
 class ReadFile
 {
