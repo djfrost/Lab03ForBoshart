@@ -5,24 +5,24 @@ using namespace std;
 Password::Password()
 {
 
-	ListArray<String*> *all_words = new ListArray<String>;
-	ListArray<String*> *viable_words = new ListArray<String>;
+	ListArray<String>* all_words = new ListArray<String>;
+	ListArray<String>* viable_words = new ListArray<String>;
 	
 }
 
 Password::~Password()
 {
-		all_words.removeAll();
-		viable_words.removeAll();
+		all_words->removeAll();
+		viable_words->removeAll();
 	
 }
 
 void Password::addWord(String* word)
 {	
-	int x = all_words.size();
+	int x = all_words->size();
 
-	viable_words.add(x, word);
-	all_words.add(x, word);
+	viable_words->add(x, word);
+	all_words->add(x, word);
 }
 
 void Password::guess(int try_password, int num_matches)
@@ -34,26 +34,28 @@ void Password::guess(int try_password, int num_matches)
 
 int Password::getNumberOfPasswordsLeft()
 {
-	return viable_words.size();
+	return viable_words->size();
 
 }
 
 void Password::displayViableWords()
 {
 	
-	ListArrayIterator<String>* via_iter = viable_words.iterator();
+	ListArrayIterator<String>* via_iter = viable_words->iterator();
 	
-	while(via_iter.hasNext())
+	while(via_iter->hasNext())
 	{
-		String* word = via_iter.next();
-		word.displayString();
+		String* word = via_iter->next();
+		word->displayString();
 	}	
 }
 
 String* Password::getOriginalWord(int index)
 {
-	String* word = all_words.get(index);
-	word.displayString();
+	String* word = all_words->get(index);
+	word->displayString();
+	
+
 } 
 
 
