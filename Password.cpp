@@ -5,9 +5,47 @@ using namespace std;
 Password::Password()
 {
 
-	ListArray<String*>* allWords = new ListArray<String*>;
+	ListArray<String*>* all_words = new ListArray<String*>;
+	ListArray<String*>* viable_words = new ListArray<String*>;
+	
 }
 
+Password::~Password();
+{
+
+
+
+}
+
+void Password::addWord(String* word)
+{
+
+
+}
+
+void Password::guess(int try_password, int num_matches)
+{
+
+
+
+}
+
+int Password::getNumberOfPasswordsLeft()
+{
+
+
+}
+
+void Password::displayViableWords()
+{
+
+}
+
+String* Password::getOriginalWord(int index)
+{
+
+
+} 
 
 
 int Password::bestGuess()
