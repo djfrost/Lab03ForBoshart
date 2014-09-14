@@ -5,11 +5,10 @@ using namespace std;
 Password::Password()
 {
 
-	ListArray<String*> *all_words = new ListArray<String*>;
-	ListArray<String*> *viable_words = new ListArray<String*>;
+	ListArray<String*> *all_words = new ListArray<String>;
+	ListArray<String*> *viable_words = new ListArray<String>;
 	
 }
-
 
 Password::~Password()
 {
