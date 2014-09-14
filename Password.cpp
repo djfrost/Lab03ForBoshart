@@ -7,18 +7,35 @@ Password::Password()
 
 	ListArray<String*>* all_words = new ListArray<String*>;
 	ListArray<String*>* viable_words = new ListArray<String*>;
+	for (int x=0; x <= 9; x++)
+	{
+		all_words[x] = NULL;
+		viable_words[x] = NULL;
+	}
 	
 }
 
 Password::~Password();
 {
-
-
-
+	for(int x=0; x<= len; x++)
+	{
+		delete all_words[x];
+		delete viable_words[x];
+	}
+	
 }
 
 void Password::addWord(String* word)
 {
+	
+	int x = 0;
+	while(viable_words[x] != NULL)
+	{
+		x++
+	}
+
+	viable_words[x] = word;
+	all_words[x] = word;
 
 
 }
