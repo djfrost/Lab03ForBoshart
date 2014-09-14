@@ -7,37 +7,23 @@ Password::Password()
 
 	ListArray<String*>* all_words = new ListArray<String*>;
 	ListArray<String*>* viable_words = new ListArray<String*>;
-	for (int x=0; x <= 9; x++)
-	{
-		all_words[x] = NULL;
-		viable_words[x] = NULL;
-	}
 	
 }
 
-Password::~Password();
+
+Password::~Password()
 {
-	for(int x=0; x<= len; x++)
-	{
-		delete all_words[x];
-		delete viable_words[x];
-	}
+		all_words->removeAll();
+		viable_words->removeAll();
 	
 }
 
 void Password::addWord(String* word)
-{
-	
-	int x = 0;
-	while(viable_words[x] != NULL)
-	{
-		x++
-	}
+{	
+	int x = all_words->size();
 
-	viable_words[x] = word;
-	all_words[x] = word;
-
-
+	viable_words->add(x, word);
+	all_words->add(x, word);
 }
 
 void Password::guess(int try_password, int num_matches)
@@ -49,7 +35,7 @@ void Password::guess(int try_password, int num_matches)
 
 int Password::getNumberOfPasswordsLeft()
 {
-
+	return viable_passwords->size();
 
 }
 
