@@ -12,36 +12,48 @@ Password::Password()
 
 Password::~Password()
 {
-		all_words->removeAll();
-		viable_words->removeAll();
+		all_words.removeAll();
+		viable_words.removeAll();
 	
 }
 
+int Password::getNumMatches(String* curr_word, String* word_guess)
+{
+	int numMatches = 0;
+	for (int X=0; X<=curr_word->length(); X++)
+	{
+		if ( curr_word->charAt(X) == word_guess->charAt(X))
+			{
+				numMatches++;
+			}
+	}
+	return numMatches;
+	
+}
 void Password::addWord(String* word)
 {	
-	int x = all_words->size();
+	int x = all_words.size();
 
-	viable_words->add(x, word);
-	all_words->add(x, word);
+	viable_words.add(x, word);
+	all_words.add(x, word);
 }
 
 void Password::guess(int try_password, int num_matches)
 {
 
 
-
 }
 
 int Password::getNumberOfPasswordsLeft()
 {
-	return viable_words->size();
+	return viable_words.size();
 
 }
 
 void Password::displayViableWords()
 {
 	
-	ListArrayIterator<String>* via_iter = viable_words->iterator();
+	ListArrayIterator<String>* via_iter = viable_words.iterator();
 	
 	while(via_iter->hasNext())
 	{
@@ -52,7 +64,7 @@ void Password::displayViableWords()
 
 String* Password::getOriginalWord(int index)
 {
-	String* word = all_words->get(index);
+	String* word = all_words.get(index);
 	word->displayString();
 	
 
@@ -67,7 +79,7 @@ int Password::bestGuess()
 
    //loop over ALL words, even if they have been eliminated as the password
    int count = 1;
-   ListArrayIterator<String>* all_iter = all_words->iterator();
+   ListArrayIterator<String>* all_iter = all_words.iterator();
    while(all_iter->hasNext())
    {
       String* original_word = all_iter->next();
@@ -81,7 +93,7 @@ int Password::bestGuess()
          count_num_matches[i] = 0;
       }
 
-      ListArrayIterator<String>* viable_iter = viable_words->iterator();
+      ListArrayIterator<String>* viable_iter = viable_words.iterator();
       while(viable_iter->hasNext())
       {
          String* viable_word = viable_iter->next();
