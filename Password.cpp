@@ -1,21 +1,11 @@
 #include "Password.h"
-using CSC2110::ListArrayIterator;
-using CSC2110::Keyboard;
-using CSC2110:ReadFile;
 #include <iostream>
 using namespace std;
 
 Password::Password()
 {
 
-	Keyboard* kb = getKeyboard();
-	
-	String* file_name = readString("Enter the file name containing the possible passwords: ");
-	
-	ReadFile(file_name);
-	
-
-
+	ListArray<String*>* allWords = new ListArray<String*>;
 }
 
 
