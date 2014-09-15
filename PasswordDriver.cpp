@@ -20,7 +20,6 @@ void addWords(Password* fh)
       String* word = rf->readLine();
       fh->addWord(word);
    }
-
    delete rf;
    fh->displayViableWords();
 }
