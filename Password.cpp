@@ -92,6 +92,7 @@ int Password::bestGuess()
    int best_guess_index = -1;
    int best_num_eliminated = -1;
    int num_viable_passwords = getNumberOfPasswordsLeft();
+   
 
    //loop over ALL words, even if they have been eliminated as the password
    int count = 1;
@@ -139,7 +140,6 @@ int Password::bestGuess()
          best_num_eliminated = num_eliminated;
          best_guess_index = count;
       }
-      
       count++;
       delete[] count_num_matches;
    }
