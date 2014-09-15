@@ -40,16 +40,18 @@ void Password::addWord(String* word)
 void Password::guess(int try_password, int num_matches)
 {
 	ListArrayIterator<String>* iter = viable_words->iterator();
+	int x = 1;
 	while(iter->hasNext())
 	{
-		int x = 1;
+		
 		String* cur_word = iter->next();
 		x++;
-		if(getNumMatches(cur_word, all_words->get(try_password)) != num_matches)
+		if((getNumMatches(cur_word, all_words->get(try_password)) < num_matches) || (all_words->get(try_password) == viable_words->get(x)))
 		{
 			viable_words->remove(x);
 			x--;
 		}
+		
 				
 	}
 	delete iter;
