@@ -5,25 +5,25 @@ using namespace std;
 Password::Password()
 {
 
-	ListArray<String*>* all_words = new ListArray<String*>;
-	ListArray<String*>* viable_words = new ListArray<String*>;
+	ListArray<String*> *all_words = new ListArray<String*>;
+	ListArray<String*> *viable_words = new ListArray<String*>;
 	
 }
 
 
 Password::~Password()
 {
-		all_words->removeAll();
-		viable_words->removeAll();
+		all_words.removeAll();
+		viable_words.removeAll();
 	
 }
 
 void Password::addWord(String* word)
 {	
-	int x = all_words->size();
+	int x = all_words.size();
 
-	viable_words->add(x, word);
-	all_words->add(x, word);
+	viable_words.add(x, word);
+	all_words.add(x, word);
 }
 
 void Password::guess(int try_password, int num_matches)
@@ -35,7 +35,7 @@ void Password::guess(int try_password, int num_matches)
 
 int Password::getNumberOfPasswordsLeft()
 {
-	return viable_passwords->size();
+	return viable_words.size();
 
 }
 
@@ -59,7 +59,7 @@ int Password::bestGuess()
 
    //loop over ALL words, even if they have been eliminated as the password
    int count = 1;
-   ListArrayIterator<String>* all_iter = all_words->iterator();
+   ListArrayIterator<String>* all_iter = all_words.iterator();
    while(all_iter->hasNext())
    {
       String* original_word = all_iter->next();
@@ -73,7 +73,7 @@ int Password::bestGuess()
          count_num_matches[i] = 0;
       }
 
-      ListArrayIterator<String>* viable_iter = viable_words->iterator();
+      ListArrayIterator<String>* viable_iter = viable_words.iterator();
       while(viable_iter->hasNext())
       {
          String* viable_word = viable_iter->next();
