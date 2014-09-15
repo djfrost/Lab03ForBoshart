@@ -40,13 +40,18 @@ void Password::addWord(String* word)
 
 void Password::guess(int try_password, int num_matches)
 {
-	for(int X=0;X<=viable_words->size();X++)
+	ListArrayIterator<String>* iter = viable_words->iterator();
+	while(iter->hasNext())
 	{
-		if((getNumMatches( viable_words->get(X), all_words->get(try_password)) < num_matches) || (viable_words->get(X) == all_words->get(try_password)))
+		int x = 1;
+		String* cur_word = iter->next();
+		x++;
+		if(getNumMatches(cur_word, all_words->get(try_password)) != num_matches)
 		{
-			viable_words->remove(X);
-			X--; //When we removed the index, it shifted the existing ones past said index down one. So we need to recheck that index.
+			viable_words->remove(x);
+			x--;
 		}
+				
 	}
 }
 
