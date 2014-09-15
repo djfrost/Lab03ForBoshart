@@ -45,13 +45,13 @@ void Password::guess(int try_password, int num_matches)
 	{
 		
 		String* cur_word = iter->next();
-		x++;
-		if((getNumMatches(cur_word, all_words->get(try_password)) < num_matches) || (all_words->get(try_password) == viable_words->get(x)))
+		
+		if((getNumMatches(cur_word, all_words->get(try_password)) < num_matches) || (all_words->get(try_password) == viable_words->get(x))) // must remove the word you guessed from the list as well because it is not a possible solution after we get the number of letters matched from it.
 		{
 			viable_words->remove(x);
 			x--;
 		}
-		
+		x++; // goes after, otherwise it never checks the first index.
 				
 	}
 	delete iter;
