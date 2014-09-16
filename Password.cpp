@@ -5,8 +5,8 @@ using namespace std;
 Password::Password()
 {
 
-	ListArray<String>* all_words = new ListArray<String>();
-	ListArray<String>* viable_words = new ListArray<String>();
+	all_words = new ListArray<String>();
+	viable_words = new ListArray<String>();
 	
 }
 
@@ -32,35 +32,34 @@ int Password::getNumMatches(String* curr_word, String* word_guess)
 }
 void Password::addWord(String* word)
 {	
-	int x = all_words.size();
+	int x = all_words->size();
 
-	viable_words.add(x, word);
-	all_words.add(x, word);
+	viable_words->add(x, word);
+	all_words->add(x, word);
 }
 
 void Password::guess(int try_password, int num_matches)
 {
 	for(int X=0;X<=viable_words->size();X++)
 	{
-		if((getNumMatches( viable_words->get(X), all_words->get(try_password)) < num_matches))
+		if((getNumMatches( viable_words->get(X), all_words->get(try_password)) < num_matches) || (viable_words->get(X) == all_words->get(try_password)))
 		{
 			viable_words->remove(X);
-			X--; // When we removed the index, it shifted the existing ones past said index down one. So we need to recheck that index.
+			X--; //When we removed the index, it shifted the existing ones past said index down one. So we need to recheck that index.
 		}
 	}
-	viable_words->remove();
 }
 
 int Password::getNumberOfPasswordsLeft()
 {
-	return viable_words.size();
+	return viable_words->size();
 
 }
 
 void Password::displayViableWords()
 {
 	
-	ListArrayIterator<String>* via_iter = viable_words.iterator();
+	ListArrayIterator<String>* via_iter = viable_words->iterator();
 	
 	while(via_iter->hasNext())
 	{
@@ -71,7 +70,7 @@ void Password::displayViableWords()
 
 String* Password::getOriginalWord(int index)
 {
-	String* word = all_words.get(index);
+	String* word = all_words->get(index);
 	word->displayString();
 	
 
@@ -86,7 +85,7 @@ int Password::bestGuess()
 
    //loop over ALL words, even if they have been eliminated as the password
    int count = 1;
-   ListArrayIterator<String>* all_iter = all_words.iterator();
+   ListArrayIterator<String>* all_iter = all_words->iterator();
    while(all_iter->hasNext())
    {
       String* original_word = all_iter->next();
@@ -100,7 +99,7 @@ int Password::bestGuess()
          count_num_matches[i] = 0;
       }
 
-      ListArrayIterator<String>* viable_iter = viable_words.iterator();
+      ListArrayIterator<String>* viable_iter = viable_words->iterator();
       while(viable_iter->hasNext())
       {
          String* viable_word = viable_iter->next();
