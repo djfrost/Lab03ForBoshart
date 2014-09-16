@@ -59,7 +59,6 @@ void Password::guess(int try_password, int num_matches)
 
 int Password::getNumberOfPasswordsLeft()
 {
-	cout << viable_words->size();
 	return viable_words->size();
 
 }
