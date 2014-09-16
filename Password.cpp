@@ -59,6 +59,7 @@ void Password::guess(int try_password, int num_matches)
 
 int Password::getNumberOfPasswordsLeft()
 {
+	cout << viable_words->size();
 	return viable_words->size();
 
 }
@@ -70,6 +71,7 @@ void Password::displayViableWords()
 	
 	while(via_iter->hasNext())
 	{
+	
 		String* word = via_iter->next();
 		word->displayString();
 		cout << endl;
@@ -80,6 +82,7 @@ void Password::displayViableWords()
 
 String* Password::getOriginalWord(int index)
 {
+	
 	String* word = all_words->get(index);
 	return word;
 	
