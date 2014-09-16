@@ -36,6 +36,7 @@ void Password::addWord(String* word)
 
 	viable_words->add(word);
 	all_words->add(word);
+	len = word->length();
 }
 
 void Password::guess(int try_password, int num_matches)
@@ -112,7 +113,7 @@ int Password::bestGuess()
       {
          count_num_matches[i] = 0;
       }
-
+	  cout << len;
       ListArrayIterator<String>* viable_iter = viable_words->iterator();
       while(viable_iter->hasNext())
       {
