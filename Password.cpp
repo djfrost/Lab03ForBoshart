@@ -7,6 +7,7 @@ Password::Password()
 
 	all_words = new ListArray<String>();
 	viable_words = new ListArray<String>();
+	len=0;
 	
 }
 
@@ -20,7 +21,7 @@ Password::~Password()
 int Password::getNumMatches(String* curr_word, String* word_guess)
 {
 	int numMatches = 0;
-	for (int X=0; X<=curr_word->length(); X++)
+	for (int X=0; X<curr_word->length(); X++)
 	{
 		if ( curr_word->charAt(X) == word_guess->charAt(X))
 			{
@@ -40,20 +41,20 @@ void Password::addWord(String* word)
 void Password::guess(int try_password, int num_matches)
 {
 	ListArrayIterator<String>* iter = viable_words->iterator();
-	int x = 1;
+	ListArray<String>* possible_list = new ListArray<String>;
 	while(iter->hasNext())
 	{
 		
 		String* cur_word = iter->next();
 		
-		if((getNumMatches(cur_word, all_words->get(try_password)) < num_matches) || (all_words->get(try_password) == viable_words->get(x))) // must remove the word you guessed from the list as well because it is not a possible solution after we get the number of letters matched from it.
+		if(getNumMatches(cur_word, all_words->get(try_password)) == num_matches) // must remove the word you guessed from the list as well because it is not a possible solution after we get the number of letters matched from it.
 		{
-			viable_words->remove(x);
-			x--;
+			possible_list->add(cur_word);
 		}
-		x++; // goes after, otherwise it never checks the first index.
-				
+		 		
 	}
+	delete viable_words;
+	viable_words = possible_list;
 	delete iter;
 }
 
