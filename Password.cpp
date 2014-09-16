@@ -113,7 +113,6 @@ int Password::bestGuess()
       {
          count_num_matches[i] = 0;
       }
-	  cout << len;
       ListArrayIterator<String>* viable_iter = viable_words->iterator();
       while(viable_iter->hasNext())
       {
