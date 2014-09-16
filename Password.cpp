@@ -5,15 +5,15 @@ using namespace std;
 Password::Password()
 {
 
-	ListArray<String>* all_words = new ListArray<String>;
-	ListArray<String>* viable_words = new ListArray<String>;
+	ListArray<String>* all_words = new ListArray<String>();
+	ListArray<String>* viable_words = new ListArray<String>();
 	
 }
 
 Password::~Password()
 {
-		all_words.removeAll();
-		viable_words.removeAll();
+		all_words->removeAll();
+		viable_words->removeAll();
 	
 }
 
@@ -40,8 +40,15 @@ void Password::addWord(String* word)
 
 void Password::guess(int try_password, int num_matches)
 {
-
-
+	for(int X=0;X<=viable_words->size();X++)
+	{
+		if((getNumMatches( viable_words->get(X), all_words->get(try_password)) < num_matches))
+		{
+			viable_words->remove(X);
+			X--; // When we removed the index, it shifted the existing ones past said index down one. So we need to recheck that index.
+		}
+	}
+	viable_words->remove();
 }
 
 int Password::getNumberOfPasswordsLeft()
